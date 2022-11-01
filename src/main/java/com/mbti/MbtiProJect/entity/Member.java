@@ -15,11 +15,11 @@ public class Member{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String memberName;
+    private String membername;
     private String memberid;
-    private String memberPassword;
-    private String PhoneNumber;
-    private String memberEmail;
-    private String memberGender;
+    private String memberpassword;
+    private String phonenumber;
+    private String memberemail;
+    private String membergender;
 
 }

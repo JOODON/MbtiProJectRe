@@ -11,6 +11,7 @@ public class Controller {
 
     @Autowired
     private MemberService memberService;
+
     @GetMapping("/mbti/login")
     public String loginPage() {
 
