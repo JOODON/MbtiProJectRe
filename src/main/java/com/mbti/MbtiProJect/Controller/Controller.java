@@ -3,6 +3,7 @@ package com.mbti.MbtiProJect.Controller;
 import com.mbti.MbtiProJect.entity.Member;
 import com.mbti.MbtiProJect.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -12,11 +13,6 @@ public class Controller {
     @Autowired
     private MemberService memberService;
 
-    @GetMapping("/mbti/login")
-    public String loginPage() {
-
-        return "loginPage";
-    }
     @GetMapping("/mbti/singup")
     public String SingUpPage() {
 
@@ -30,4 +26,37 @@ public class Controller {
 
         return "loginPage";
     }
+
+    @GetMapping("/mbti/login")
+    public String loginPage() {
+
+        return "loginPage";
+    }
+    @PostMapping("/mbti/loginPro")
+    public String boardlogin(Member member, Model model) {
+        int result=memberService.login(member.getMemberid(), member.getMemberpassword());
+
+        if (result==1) {
+            model.addAttribute("message", "로그인에 성공하셨습니다");
+            model.addAttribute("searchUrl", "/mbti/mainpage");
+        }
+        else if (result==0) {
+            model.addAttribute("message", "비밀번호가 틀립니다");
+            model.addAttribute("searchUrl", "/mbti/login");
+        }
+        else if (result==-1) {
+            model.addAttribute("message", "존재하지않는 아이디입니다");
+            model.addAttribute("searchUrl", "/mbti/login");
+        }
+        else if (result==-2) {
+            model.addAttribute("message", "데이터 베이스의 오류가 발견되었습니다");
+            model.addAttribute("searchUrl", "/mbti/login");
+        }
+        return "message";
+        }
+        @GetMapping("/mbti/mainpage")
+        public String mainPage() {
+
+            return "mainPage";
+        }
 }
