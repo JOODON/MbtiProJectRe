@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="kr">
+<html lang="kr" xmlns:th="http://www.thymleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
@@ -331,22 +331,24 @@
   <!--        두번째 페이지(검사 질문 페이지, 메인)-->
   <section id="content">
     <form action="" method="get">
-      <section class="container">
+      <!--//이부분 -->
+      <section class="container" th:each="mbtilist:${list}">
         <!--                    질문-->
+
         <div class="inquiry_box">
-          <input name="inquiry" type="text" value="당신은 외향적입니까?" onfocus="this.blur(); ">
+          <input name="inquiry" type="text" th:text="${mbtilist.mbtitext}" onfocus="this.blur(); ">
         </div>
         <!--                    ox 선택-->
         <div class="choice_box">
-          <label><input type="radio" name="radio" id="radio_o" value="o">O</label>
-          <label><input type="radio" name="radio" id="radio_x" value="x">X</label>
+          <label><!--<input type="radio" name="radio" id="radio_o" value="o">--><a th:href ="@{/mbti/mainpage(page = ${mbtilist.id})}" >O</a></label>
+          <label><!--<input type="radio" name="radio" id="radio_x" value="x">--><a th:href ="@{/mbti/mainpage(page = ${mbtilist.id})}" >X</a></label>
         </div>
         <!--                    이전, 다음 버튼-->
         <div class="button_box">
           <table>
             <tr>
-              <td><input type="button" class="but" id="previous" value="이전"></td>
-              <td><input type="button" class="but" id="next" value="다음" ></td>
+              <td><!--<input type="button" class="but" id="previous" value="이전">--><a th:href ="@{/mbti/mainpage(page = ${mbtilist.id})}" >이전</a></td>
+              <td><!--<input type="button" class="but" id="next" value="다음" >--><a th:href ="@{/mbti/mainpage(page = ${mbtilist.id})}" >다음</a></td>
             </tr>
           </table>
         </div>
