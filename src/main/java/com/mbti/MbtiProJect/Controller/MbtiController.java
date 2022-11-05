@@ -13,12 +13,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MbtiController {
     @Autowired
     private MbtiService mbtiService;
-
     @GetMapping("/mbti/mainpage")
-    public String mainPage(Model model, @PageableDefault(page = 0,size = 1,sort = "id",direction= Sort.Direction.ASC ) Pageable pageable) {
+    public String mainPage(){
+        return "mainPage";
+    }
+
+    @GetMapping("/mbti/secondmainpage")
+    public String secondmainPage(Model model, @PageableDefault(page = 0,size = 1,sort = "id",direction= Sort.Direction.ASC ) Pageable pageable) {
 
         model.addAttribute("list",mbtiService.mbtilists(pageable));
 
-        return "mainPage";
+        return "secondMainPage";
     }
 }

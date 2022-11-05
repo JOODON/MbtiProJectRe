@@ -158,7 +158,7 @@
             box-shadow: none;
         }
 
-        .main .inquiry_box input {
+        .main .inquiry_box input{
             font-size: 20px;
             width: 100%;
             text-align: center;
@@ -217,19 +217,19 @@
                 <!--                    질문-->
 
                 <div class="inquiry_box">
-                    <input name="inquiry" type="text" th:text="${mbtilist.mbtitext}" onfocus="this.blur(); ">
+                    <input name="inquiry" type="text" th:value="${mbtilist.mbtitext}" onfocus="this.blur(); ">
                 </div>
                 <!--                    ox 선택-->
                 <div class="choice_box">
-                    <label><a th:href ="@{/mbti/mainpage(page = ${mbtilist.id})}" >O</a></label>
-                    <label><a th:href ="@{/mbti/mainpage(page = ${mbtilist.id})}" >X</a></label>
+                    <label><a th:href ="@{/mbti/secondmainpage(page = ${mbtilist.id})}" >O</a></label>
+                    <label><a th:href ="@{/mbti/secondmainpage(page = ${mbtilist.id})}" >X</a></label>
                 </div>
                 <!--                    이전, 다음 버튼-->
                 <div class="button_box">
                     <table>
                         <tr>
-                            <td><a th:href ="@{/mbti/mainpage(page = ${mbtilist.id})}" >이전</a></td>
-                            <td><a th:href ="@{/mbti/mainpage(page = ${mbtilist.id})}" >다음</a></td>
+                            <td><a th:href ="@{/mbti/secondmainpage(page = ${mbtilist.id})}" >이전</a></td>
+                            <td><a th:href ="@{/mbti/secondmainpage(page = ${mbtilist.id})}" >다음</a></td>
                         </tr>
                     </table>
                 </div>
