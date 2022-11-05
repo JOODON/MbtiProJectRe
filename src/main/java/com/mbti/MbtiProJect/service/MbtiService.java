@@ -12,6 +12,9 @@ public class MbtiService {
     @Autowired
     private MbtiRepository mbtiRepository;
 
+    public Mbtilist mbtiview(Integer id){
+        return mbtiRepository.findById(id).get();
+    }
     public Page<Mbtilist> mbtilists(Pageable pageable){
         return mbtiRepository.findAll(pageable);
     }

@@ -16,6 +16,6 @@ public class Mbtilist {
     private Integer id;
     private String mbtitext;
     private String mbtivalue;
-
+    private String mbtitestvalue;
 
 }

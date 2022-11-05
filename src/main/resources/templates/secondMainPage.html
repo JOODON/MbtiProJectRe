@@ -165,26 +165,30 @@
         }
 
         /*라디오 버튼 none*/
-        .main .choice_box input[id*="radio"] {
+        .main .choice_box input[id*="radio"]{
             display: none;
         }
 
         /*ox 폰트 크기*/
-        .main .choice_box {
+        .main .choice_box button a{
             font-size: 120px;
         }
 
         /*ox 크기*/
-        .main .choice_box a {
+        .main .choice_box button a {
             padding: 10px;
             margin: 20px;
             cursor: pointer;
         }
-
+        .main .choice_box button{
+            background-color: white;
+            border: none;
+        }
         /*ox 커서 이벤트*/
-        .main .choice_box a:hover {
+        .main .choice_box  button a:hover {
             color: #cb2d2d;
         }
+
     </style>
 
     <title>Mbti Main</title>
@@ -221,8 +225,8 @@
                 </div>
                 <!--                    ox 선택-->
                 <div class="choice_box">
-                    <label><a th:href ="@{/mbti/secondmainpage(page = ${mbtilist.id})}" >O</a></label>
-                    <label><a th:href ="@{/mbti/secondmainpage(page = ${mbtilist.id})}" >X</a></label>
+                    <label><button type="submit" name="mbtivalue" value="E"><a th:href ="@{/mbti/secondmainpage(page = ${mbtilist.id})}" >O</a></button></label>
+                    <label><button type="submit" name="mbtivalue" value="I"><a th:href ="@{/mbti/secondmainpage(page = ${mbtilist.id})}" >X</a></button></label>
                 </div>
                 <!--                    이전, 다음 버튼-->
                 <div class="button_box">
@@ -241,6 +245,5 @@
 <footer class="information">
 
 </footer>
-
 </body>
 </html>
