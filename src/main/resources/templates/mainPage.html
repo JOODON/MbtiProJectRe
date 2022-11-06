@@ -204,7 +204,7 @@
       <ul id="centerMenu">
         <li><a href="/mbti/secondmainpage">홈</a></li>
         <li><a href="#">소개</a></li>
-        <li><a href="/mbti/login">로그인</a></li>
+        <li><a href="/mbti/login" th:if="memberid==null">로그인</a></li>
       </ul>
     </nav>
   </header>

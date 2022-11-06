@@ -20,14 +20,17 @@ public class MbtiController {
     }
 
     @GetMapping("/mbti/secondmainpage")
-    public String secondmainPage(Model model, @PageableDefault(page = 1,size = 1,sort = "id",direction= Sort.Direction.ASC ) Pageable pageable,String mbtivalue) {
+    public String secondmainPage(Model model, @PageableDefault(page = 1,size = 1,sort = "id",direction= Sort.Direction.ASC ) Pageable pageable ,String value) {
         Mbtilist mbtiValue=mbtiService.mbtiview(pageable.getPageNumber());
-        int mbtiValueint=0;
-
         model.addAttribute("list",mbtiService.mbtilists(pageable));
-        model.addAttribute("mbtiValueint",mbtiValueint);
-
-        if (mbtiValue.equals("E")) {
+        System.out.println(value);
+        //이부분으로 순서대로 값 받기 if00<4 and
+        System.out.println(mbtiValue.getId());
+        //처음값이 넒값이 나오므로 1로 처리
+        if(value==null){
+            value="1";
+        }
+        else if (value.equals("1")){
             mbtiValue.setId(mbtiValue.getId());
             mbtiValue.setMbtitext(mbtiValue.getMbtitext());
             mbtiValue.setMbtivalue(mbtiValue.getMbtivalue());
@@ -38,9 +41,8 @@ public class MbtiController {
             mbtiValue.setMbtivalue(mbtiValue.getMbtivalue());
             mbtiValue.setMbtitestvalue("I");
         }
+
         System.out.println(mbtiValue);
-
-
 
         return "secondMainPage";
     }
