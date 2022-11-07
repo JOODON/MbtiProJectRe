@@ -99,10 +99,16 @@ public class MbtiController {
             mbtiValue.setMbtitext(mbtiValue.getMbtitext());
             mbtiValue.setMbtivalue(mbtiValue.getMbtivalue());
             mbtiValue.setMbtitestvalue("P");
-        } else if (mbtiValue.getId()==22) {
-//            "결과값 페에지로 넘아가기";
+        } else if (mbtiValue.getId()>=22) {
+            model.addAttribute("message", "결과값 페이지로 이동합니다");
+            model.addAttribute("searchUrl", "/mbti/resultpage");
+
         }
         System.out.println(mbtiValue);
         return "secondMainPage";
+    }
+    @GetMapping("/mbti/resultpage")
+    public String resultPage(){
+        return "resultMainPage";
     }
 }
