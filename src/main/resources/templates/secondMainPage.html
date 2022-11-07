@@ -22,7 +22,10 @@
             color: #3a3939;
         }
 
+        html {font-size: 20px;}
+
         body {
+            font-size: 1rem;
             width: 100%;
             height: 100vh;
             position: relative;
@@ -30,8 +33,7 @@
 
         /*커서 영역 기준*/
         .header_line {
-            /*border: 1px solid red;*/
-            width: 100%; height: 115px;
+            width: 100%; height: 5.75rem;
             position: relative;
             overflow: hidden;
         }
@@ -41,7 +43,7 @@
             width: 100%; height: 100px;
             z-index: 2;
             position: absolute;
-            top: -110px;
+            top: -5.5rem;
             background: #e9eff6;
             display: flex;
             align-items: center;
@@ -51,27 +53,26 @@
 
         /*커서 올렸을 때 나타내기*/
         .header_line:hover > #header {
-            top: 0px;
+            top: 0;
         }
 
         /*로고 디자인*/
         #header #logo {
-            padding: 20px;
-            margin-left: 70px;
+            padding: 1rem;
+            margin-left: 3.5rem;
             cursor: pointer;
         }
 
         /*메뉴바(네비바) 디자인*/
         #header #centerMenu {
             display: flex;
-            width: 170px;
             justify-content: space-between;
-            margin-right: 80px;
+            margin-right: 4.5rem;
         }
 
         /*nav*/
         #header #centerMenu li {
-            padding: 8px;
+            padding: .4rem;
             cursor: pointer;
         }
 
@@ -82,13 +83,12 @@
 
         /*nav 커서 애니메이션*/
         #header #centerMenu li:hover > a {
-            font-size: 1.1rem;
+            font-size: 1.1em;
         }
 
         /*질문 박스*/
         .main {
             width: 100%;
-            /*height: 100vh;*/
         }
 
         /*text 라인 없애기*/
@@ -102,11 +102,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 5px 5px 10px #a0a6bb;
+            box-shadow: .25rem .25rem .5rem #a0a6bb;
             background-color: #e9eff6;
-            border-radius: 10px;
-            width: 700px; height: 500px;
-            margin: 30px auto;
+            border-radius: .5rem;
+            width: 35rem; height: 25rem;
+            margin: 1.5rem auto;
 
             animation: testcontainer 2s both;
         }
@@ -120,8 +120,8 @@
         /*검사 페이지 디자인(안쪽 흰색)*/
         .container {
             background-color: #ffffff;
-            border-radius: 10px;
-            width: 650px; height: 450px;
+            border-radius: .5rem;
+            width: 32.5rem; height: 22.5rem;
             text-align: center;
             display: grid;
             grid-template-rows: 1fr 2fr 1fr;
@@ -135,17 +135,17 @@
 
         /*이전, 다음 버튼 테이블 크기 조정*/
         .button_box table td {
-            width: 300px; height: 100px;
+            width: 15rem; height: 5rem;
         }
 
         /*이전, 다음 버튼 디자인*/
         .button_box td a {
-            font-family: 'Jua', sans-serif; font-size: 25px;
-            padding: 15px 100px;
+            font-family: 'Jua', sans-serif; font-size: 1.25rem;
+            padding: .75rem 5rem;
             border: none;
             background-color: #a0a6bb; color: #fff;
-            box-shadow: 2px 2px 5px #a0a6bb;
-            border-radius: 5px;
+            box-shadow: .1rem .1rem .25rem #a0a6bb;
+            border-radius: .25rem;
             transition-duration: .05s;
             cursor: pointer;
         }
@@ -153,13 +153,13 @@
         .button_box td a:hover{background: #7c8093;}
 
         .button_box td a:active{
-            margin-left: 1.5px;
-            margin-top: 1.5px;
+            margin-left: .075rem;
+            margin-top: .075rem;
             box-shadow: none;
         }
 
         .main .inquiry_box input{
-            font-size: 20px;
+            font-size: 1rem;
             width: 100%;
             text-align: center;
         }
@@ -171,13 +171,13 @@
 
         /*ox 폰트 크기*/
         .main .choice_box button a{
-            font-size: 120px;
+            font-size: 6rem;
         }
 
-        /*ox 크기*/
+        /*ox 영역 크기*/
         .main .choice_box button a {
-            padding: 10px;
-            margin: 20px;
+            padding: .5rem;
+            margin: 1rem;
             cursor: pointer;
         }
         .main .choice_box button{
@@ -189,6 +189,38 @@
             color: #cb2d2d;
         }
 
+        /*페이지 좁아졌을 때*/
+        @media screen and (max-width: 38.4rem) {
+            /*네비바 크기*/
+            #header {
+                font-size: .8em;
+            }
+            /*바깥쪽 테두리 크기(파란색)*/
+            #content {
+                width: 22rem;
+            }
+            /*안쪽 테두리 크기(흰색)*/
+            .container {
+                width: 19.5rem;
+            }
+            /*ox 폰트 크기*/
+            .main .choice_box button a{
+                font-size: 5.5rem;
+            }
+            /*이전, 다음 버튼 테이블 크기 조정*/
+            .button_box table td {
+                width: 15rem; height: 5rem;
+            }
+            /*이전, 다음 버튼 디자인*/
+            .button_box td a {
+                padding: .55rem 2.7rem;
+                font-size: 1rem;
+            }
+            /*질문 글자 크기*/
+            .main .inquiry_box input{
+                font-size: .8rem;
+            }
+        }
     </style>
 
     <title>Mbti Main</title>
