@@ -9,6 +9,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 
@@ -33,21 +34,20 @@ public class Controller {
     }
 
     @GetMapping("/mbti/login")
-    public String loginPage(Model model) {
-        String memberid=null;
-        if(memberid != null) {
-            model.addAttribute("message", "이미 로그인이 되어있습니다.");
-            model.addAttribute("searchUrl", "/mbti/mainpage");
-        }
+    public String loginPage() {
+
         return "loginPage";
     }
     @PostMapping("/mbti/loginPro")
-    public String boardlogin(Member member, Model model, HttpSession httpSession) {
+    public String boardlogin(Member member, Model model, HttpSession httpSession){
         int result=memberService.login(member.getMemberid(), member.getMemberpassword());
-        String memberid=null;
+        String userSession=null;
 
-        if(memberid != null) {
-            model.addAttribute("message", "이미 로그인이 되어있습니다.");
+        if (httpSession.getAttribute("memberid")!= null){
+            userSession=(String) httpSession.getAttribute("memberid");
+        }
+        if(userSession != null) {
+            model.addAttribute("message", "이미 로그인에 되어있습니다.");
             model.addAttribute("searchUrl", "/mbti/mainpage");
         }
         if (result==1) {
@@ -67,8 +67,16 @@ public class Controller {
             model.addAttribute("message", "데이터 베이스의 오류가 발견되었습니다");
             model.addAttribute("searchUrl", "/mbti/login");
         }
+        model.addAttribute("userSession",userSession);
+
         return "message";
         }
-
+    @GetMapping("/mbti/logout/pro")
+    public String mbtilogout(HttpSession httpSession,Model model){
+        httpSession.removeAttribute("memberid");
+        model.addAttribute("message", "로그아웃 되었습니다.");
+        model.addAttribute("searchUrl", "/mbti/login");
+        return "message";
+    }
 
 }

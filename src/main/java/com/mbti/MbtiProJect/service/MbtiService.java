@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 public class MbtiService {
     @Autowired
     private MbtiRepository mbtiRepository;
-
     public Mbtilist mbtiview(Integer id){
         return mbtiRepository.findById(id).get();
     }

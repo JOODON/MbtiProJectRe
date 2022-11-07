@@ -9,13 +9,23 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.thymeleaf.model.IModel;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class MbtiController {
     @Autowired
     private MbtiService mbtiService;
     @GetMapping("/mbti/mainpage")
-    public String mainPage(){
+    public String mainPage(HttpSession httpSession,Model model){
+        String userSession=null;
+
+        if (httpSession.getAttribute("memberid")!= null){
+            userSession=(String) httpSession.getAttribute("memberid");
+        }
+        System.out.println("메인페이지에서:"+userSession);
+        model.addAttribute("userSession",userSession);
         return "mainPage";
     }
 
