@@ -70,7 +70,7 @@
       margin-right: 4.5rem
     }
 
-    /*nav*/
+    /*nav 메뉴들*/
     #header #centerMenu li {
       padding: .4rem;
       cursor: pointer;
@@ -119,18 +119,7 @@
       animation-delay: .7s;
     }
 
-    /*회원가입 하고 결과 저장하기*/
-    .main #loding > a{
-      position: relative;
-      animation: message 1.8s ease;
-      animation-fill-mode: both;
-      animation-delay: 1.4s;
-    }
-
-    .main #loding > a:hover {
-      text-decoration: underline;
-    }
-
+    /*메세지 애니메이션*/
     @keyframes message {
       from {
         left: -100px;
@@ -140,6 +129,25 @@
         left: 0px;
         opacity: 1;
       }
+    }
+
+    /*회원가입 하고 결과 저장하기*/
+    .main #loding > a{
+      position: relative;
+      animation: butani 2.7s ease;
+      animation-fill-mode: both;
+      animation-delay: 1.7s;
+    }
+
+    /*회원가입 결과 저장 애니메이션*/
+    @keyframes butani {
+      from {opacity: 0}
+      to {opacity: 1}
+    }
+
+    /*회원가입 결과 저장 hover*/
+    .main #loding > a:hover {
+      text-decoration: underline;
     }
 
     /*페이지 좁아졌을 때*/
