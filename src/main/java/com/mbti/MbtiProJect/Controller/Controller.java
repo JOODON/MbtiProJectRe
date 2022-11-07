@@ -75,8 +75,7 @@ public class Controller {
     public String mbtilogout(HttpSession httpSession,Model model){
         httpSession.removeAttribute("memberid");
         model.addAttribute("message", "로그아웃 되었습니다.");
-        model.addAttribute("searchUrl", "/mbti/login");
+        model.addAttribute("searchUrl", "/mbti/mainpage");
         return "message";
     }
-
 }

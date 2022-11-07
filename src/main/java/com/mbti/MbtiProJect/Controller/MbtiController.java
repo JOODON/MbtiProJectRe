@@ -30,7 +30,15 @@ public class MbtiController {
     }
 
     @GetMapping("/mbti/secondmainpage")
-    public String secondmainPage(Model model, @PageableDefault(page = 1,size = 1,sort = "id",direction= Sort.Direction.ASC ) Pageable pageable ,String value) {
+    public String secondmainPage(Model model, @PageableDefault(page = 1,size = 1,sort = "id",direction= Sort.Direction.ASC ) Pageable pageable ,String value,HttpSession httpSession) {
+        String userSession=null;
+
+        if (httpSession.getAttribute("memberid")!= null){
+            userSession=(String) httpSession.getAttribute("memberid");
+        }
+        System.out.println("메인페이지에서:"+userSession);
+        model.addAttribute("userSession",userSession);
+
         Mbtilist mbtiValue=mbtiService.mbtiview(pageable.getPageNumber());
         model.addAttribute("list",mbtiService.mbtilists(pageable));
         System.out.println(value);
