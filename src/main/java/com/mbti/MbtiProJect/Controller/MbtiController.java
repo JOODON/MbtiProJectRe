@@ -45,23 +45,64 @@ public class MbtiController {
         //이부분으로 순서대로 값 받기 if00<4 and
         System.out.println(mbtiValue.getId());
         //처음값이 넒값이 나오므로 1로 처리
+
         if(value==null){
             value="1";
         }
-        else if (value.equals("1")){
+        // I랑 E부분 처리
+        else if (value.equals("1")&&mbtiValue.getId()<=6){
             mbtiValue.setId(mbtiValue.getId());
             mbtiValue.setMbtitext(mbtiValue.getMbtitext());
             mbtiValue.setMbtivalue(mbtiValue.getMbtivalue());
             mbtiValue.setMbtitestvalue("E");
-        }else {
+        }
+        else if(value.equals("2")&&mbtiValue.getId()<=6){
             mbtiValue.setId(mbtiValue.getId());
             mbtiValue.setMbtitext(mbtiValue.getMbtitext());
             mbtiValue.setMbtivalue(mbtiValue.getMbtivalue());
             mbtiValue.setMbtitestvalue("I");
         }
-
+        //S랑 N값 처리
+        else if (value.equals("1")&&mbtiValue.getId()<=11&&mbtiValue.getId()>6){
+            mbtiValue.setId(mbtiValue.getId());
+            mbtiValue.setMbtitext(mbtiValue.getMbtitext());
+            mbtiValue.setMbtivalue(mbtiValue.getMbtivalue());
+            mbtiValue.setMbtitestvalue("N");
+        }
+        else if(value.equals("2")&&mbtiValue.getId()<=11&&mbtiValue.getId()>6){
+            mbtiValue.setId(mbtiValue.getId());
+            mbtiValue.setMbtitext(mbtiValue.getMbtitext());
+            mbtiValue.setMbtivalue(mbtiValue.getMbtivalue());
+            mbtiValue.setMbtitestvalue("S");
+        }
+        //T랑 F값 처리
+        else if (value.equals("1")&&mbtiValue.getId()<=16&&mbtiValue.getId()>11){
+            mbtiValue.setId(mbtiValue.getId());
+            mbtiValue.setMbtitext(mbtiValue.getMbtitext());
+            mbtiValue.setMbtivalue(mbtiValue.getMbtivalue());
+            mbtiValue.setMbtitestvalue("F");
+        }
+        else if(value.equals("2")&&mbtiValue.getId()<=16&&mbtiValue.getId()>11){
+            mbtiValue.setId(mbtiValue.getId());
+            mbtiValue.setMbtitext(mbtiValue.getMbtitext());
+            mbtiValue.setMbtivalue(mbtiValue.getMbtivalue());
+            mbtiValue.setMbtitestvalue("T");
+        }
+        else if (value.equals("1")&&mbtiValue.getId()<=21&&mbtiValue.getId()>16){
+            mbtiValue.setId(mbtiValue.getId());
+            mbtiValue.setMbtitext(mbtiValue.getMbtitext());
+            mbtiValue.setMbtivalue(mbtiValue.getMbtivalue());
+            mbtiValue.setMbtitestvalue("J");
+        }
+        else if(value.equals("2")&&mbtiValue.getId()<=21&&mbtiValue.getId()>16){
+            mbtiValue.setId(mbtiValue.getId());
+            mbtiValue.setMbtitext(mbtiValue.getMbtitext());
+            mbtiValue.setMbtivalue(mbtiValue.getMbtivalue());
+            mbtiValue.setMbtitestvalue("P");
+        } else if (mbtiValue.getId()==22) {
+//            "결과값 페에지로 넘아가기";
+        }
         System.out.println(mbtiValue);
-
         return "secondMainPage";
     }
 }
