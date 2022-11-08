@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 public class MbtiService {
     @Autowired
     private MbtiRepository mbtiRepository;
+    public void MbtiResultadd(Mbtilist mbtilist)throws Exception{
+        mbtiRepository.save(mbtilist);
+    }
     public Mbtilist mbtiview(Integer id){
         return mbtiRepository.findById(id).get();
     }

@@ -30,9 +30,9 @@ public class MbtiController {
     }
 
     @GetMapping("/mbti/secondmainpage")
-    public String secondmainPage(Model model, @PageableDefault(page = 1,size = 1,sort = "id",direction= Sort.Direction.ASC ) Pageable pageable ,String value,HttpSession httpSession) {
+    public String secondmainPage(Model model, @PageableDefault(page = 1,size = 1,sort = "id",direction= Sort.Direction.ASC ) Pageable pageable ,String value,HttpSession httpSession) throws Exception {
         String userSession=null;
-
+        int pagenum= pageable.getPageNumber();
         if (httpSession.getAttribute("memberid")!= null){
             userSession=(String) httpSession.getAttribute("memberid");
         }
@@ -41,7 +41,7 @@ public class MbtiController {
 
         Mbtilist mbtiValue=mbtiService.mbtiview(pageable.getPageNumber());
         model.addAttribute("list",mbtiService.mbtilists(pageable));
-        System.out.println(value);
+        System.out.println(pagenum);
         //이부분으로 순서대로 값 받기 if00<4 and
         System.out.println(mbtiValue.getId());
         //처음값이 넒값이 나오므로 1로 처리
@@ -99,14 +99,14 @@ public class MbtiController {
             mbtiValue.setMbtitext(mbtiValue.getMbtitext());
             mbtiValue.setMbtivalue(mbtiValue.getMbtivalue());
             mbtiValue.setMbtitestvalue("P");
-        } else if (mbtiValue.getId()>=22) {
-            model.addAttribute("message", "결과값 페이지로 이동합니다");
-            model.addAttribute("searchUrl", "/mbti/resultpage");
-
+        } else{
+            return "resultMainPage";
         }
+        mbtiService.MbtiResultadd(mbtiValue);
         System.out.println(mbtiValue);
         return "secondMainPage";
     }
+
     @GetMapping("/mbti/resultpage")
     public String resultPage(){
         return "resultMainPage";
