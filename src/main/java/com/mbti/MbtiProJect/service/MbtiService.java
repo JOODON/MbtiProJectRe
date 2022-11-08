@@ -20,4 +20,5 @@ public class MbtiService {
     public Page<Mbtilist> mbtilists(Pageable pageable){
         return mbtiRepository.findAll(pageable);
     }
+
 }
