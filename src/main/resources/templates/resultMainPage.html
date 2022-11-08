@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="kr">
+<html lang="kr" xmlns:th="http://www.thymleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
@@ -184,7 +184,7 @@
   <section id="loding">
     <div class="message_box">
       <p>당신의 <span>성격유형</span>은</p>
-      <p><a>INFP</a>입니다.</p>
+      <p><a th:text="${mbtivalue}">INFP</a>입니다.</p>
     </div>
     <a href="SingUpPage.html">회원가입하고 결과 저장하기</a>
   </section>

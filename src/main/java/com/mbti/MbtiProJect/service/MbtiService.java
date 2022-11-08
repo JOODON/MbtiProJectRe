@@ -21,7 +21,7 @@ public class MbtiService {
         return mbtiRepository.findAll(pageable);
     }
 
-    public Long mbtivalueE(){
-        return mbtiRepository.countBymbtitestvalue("E");
+    public Long mbtivalue(String Keyword){
+        return mbtiRepository.countBymbtitestvalue(Keyword);
     }
 }
