@@ -109,6 +109,8 @@ public class MbtiController {
 
     @GetMapping("/mbti/resultpage")
     public String resultPage(){
+        Long num=mbtiService.mbtivalue();
+        System.out.println(num);
         return "resultMainPage";
     }
 }
