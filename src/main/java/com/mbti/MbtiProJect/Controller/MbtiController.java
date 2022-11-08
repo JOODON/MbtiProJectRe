@@ -102,6 +102,7 @@ public class MbtiController {
         } else{
             return "redirect:/mbti/resultpage";
         }
+        mbtiService.MbtiResultadd(mbtiValue);
         return "secondMainPage";
     }
 

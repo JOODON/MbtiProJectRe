@@ -170,12 +170,12 @@
         }
 
         /*ox 폰트 크기*/
-        .main .choice_box a{
+        .main .choice_box button a{
             font-size: 6rem;
         }
 
         /*ox 영역 크기*/
-        .main .choice_box a {
+        .main .choice_box button a {
             padding: .5rem;
             margin: 1rem;
             cursor: pointer;
@@ -185,7 +185,7 @@
             border: none;
         }
         /*ox 커서 이벤트*/
-        .main .choice_box a:hover {
+        .main .choice_box  button a:hover {
             color: #cb2d2d;
         }
 
@@ -204,7 +204,7 @@
                 width: 19.5rem;
             }
             /*ox 폰트 크기*/
-            .main .choice_box a{
+            .main .choice_box button a{
                 font-size: 5.5rem;
             }
             /*이전, 다음 버튼 테이블 크기 조정*/
@@ -258,8 +258,8 @@
                 </div>
                 <!--                    ox 선택-->
                 <div class="choice_box">
-                    <label><a th:href ="@{/mbti/secondmainpage(page = ${mbtilist.id},value=1)}" >O</a></button></label>
-                    <label><a th:href ="@{/mbti/secondmainpage(page = ${mbtilist.id},value=2)}" >X</a></button></label>
+                    <label><button type="submit" name=value><a th:href ="@{/mbti/secondmainpage(page = ${mbtilist.id},value=1)}" >O</a></button></label>
+                    <label><button type="submit" name=value><a th:href ="@{/mbti/secondmainpage(page = ${mbtilist.id},value=2)}" >X</a></button></label>
                 </div>
                 <!--                    이전, 다음 버튼-->
                 <div class="button_box">
