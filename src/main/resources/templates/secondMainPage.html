@@ -265,8 +265,8 @@
                 <div class="button_box">
                     <table>
                         <tr>
-                            <td><a th:href ="@{/mbti/secondmainpage(page = ${mbtilist.id-2})}" >이전</a></td>
-                            <td><a th:href ="@{/mbti/secondmainpage(page = ${mbtilist.id})}" >다음</a></td>
+                            <td><a th:if="${mbtilist.id-2!=0}" th:href ="@{/mbti/secondmainpage(page = ${mbtilist.id-2})}">이전</a></td>
+                            <td><a th:if="${mbtilist.id!=22}" th:href ="@{/mbti/secondmainpage(page = ${mbtilist.id})}">다음</a></td>
                         </tr>
                     </table>
                 </div>
