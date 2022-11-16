@@ -24,4 +24,5 @@ public class MbtiService {
     public Long mbtivalue(String Keyword){
         return mbtiRepository.countBymbtitestvalue(Keyword);
     }
+    //레디스 카프카 인프라적인 장기기능 aws Github jenkins (docker)
 }
