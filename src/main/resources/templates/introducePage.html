@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="kr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="introducePage.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+
+  <script src="https://kit.fontawesome.com/41cdbb121d.js" crossorigin="anonymous"></script>
+
+  <style>
+    *{
+      font-family: 'Jua', sans-serif;
+      list-style: none;
+      text-decoration: none;
+      border-collapse: collapse;
+      margin: 0; padding: 0;
+      color: #3a3939;
+    }
+    html {font-size: 20px;}
+
+    body {
+      font-size: 1rem;
+      width: 100%;
+      height: 100vh;
+      position: relative;
+    }
+
+    /*커서 영역 기준*/
+    .header_line {
+      width: 100%; height: 5.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /*헤더 디자인*/
+    #header {
+      width: 100%; height: 5rem;
+      z-index: 2;
+      position: absolute;
+      top: -5.5rem;
+      background: #e9eff6;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: .3s;
+    }
+
+    /*커서 올렸을 때 나타내기*/
+    .header_line:hover > #header {
+      top: 0;
+    }
+
+    /*로고 디자인*/
+    #header #logo {
+      padding: 1rem;
+      margin-left: 3.5rem;
+      cursor: pointer;
+    }
+
+    /*메뉴바(네비바) 디자인*/
+    #header #centerMenu {
+      display: flex;
+      justify-content: space-between;
+      margin-right: 4.5rem
+    }
+
+    /*nav 메뉴들*/
+    #header #centerMenu li {
+      padding: .4rem;
+      cursor: pointer;
+    }
+
+    /*nav 애니메이션*/
+    #header #centerMenu li > a {
+      transition: all .05s;
+    }
+
+    /*nav 커서 애니메이션*/
+    #header #centerMenu li:hover > a {
+      font-size: 1.1em;
+    }
+
+    /*메인*/
+    .main {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .main input[id*="slide"] {
+      display: none;
+    }
+
+    /*슬라이드 정렬*/
+    .pagelist {
+      width: 30rem; height: 25rem;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    /*슬라이드 크기 지정*/
+    .pagelist li {
+      display: inline-block;
+      position: relative;
+      width: 94%; height: 92%;
+      transition: .8s ease-in-out;
+    }
+
+    /*선택 버튼 창 크기*/
+    .main .introduce_select {
+      top: 5rem;
+      margin-right: 1.45rem;
+    }
+
+    /*선택 버튼 디자인*/
+    .main .pagelist .but {
+      text-align: center;
+      background: white;
+      border: 2px solid #a0a6bb;
+      border-radius:100px;
+      font-size: 1rem;
+      padding: .75rem 1rem;
+      margin: 5.5rem;
+      cursor: pointer;
+      transition: .3s cubic-bezier(.5, 1.3, .15, 1.5);
+    }
+
+    /*선택 버튼 호버*/
+    .main .but:hover{
+      font-size: 1.15em;
+    }
+
+    /*백엔드 소개창*/
+    .pagelist #back_page {
+      background: white;
+      border: 5px solid #a0a6bb;
+      border-radius: 5px;
+      padding: .75rem;
+    }
+
+    /*프론트 소개 창 */
+    .pagelist #front_page {
+      border: 5px solid #a0a6bb;
+      border-radius: 5px;
+      padding: .75rem;
+    }
+
+    /*소개 창 옆으로 가기 버튼 디자인*/
+    .introduce a {
+      border: 2px solid #a0a6bb;
+      border-radius: 100px;
+      padding: .5rem .75rem;
+      cursor: pointer;
+    }
+
+    /*백엔드 옆으로 가기 버튼 위치*/
+    #back_page a {
+      position: relative;
+      left: 30rem;
+      top: 5rem;
+    }
+
+    /*프론트 버튼 위치*/
+    #front_page a {
+      position: relative;
+      top: 5rem;
+    }
+
+    .main [id="slide1"]:checked ~ .pagelist > li {transform: translateX(0%);}
+    .main [id="slide2"]:checked ~ .pagelist > li {transform: translateX(-100%);}
+    .main [id="slide3"]:checked ~ .pagelist > li {transform: translateX(-200%);}
+
+
+  </style>
+
+  <title>Mbti Introduce</title>
+</head>
+<body>
+<!--    헤더-->
+<div class="header_line">
+  <header id="header">
+    <!--            로고-->
+    <h1 id="logo"><a href="mainPage.html">Mbti</a></h1>
+
+    <!--            메뉴-->
+    <nav id="navbar">
+      <ul id="centerMenu">
+        <li><a href="/mbti/secondmainpage">홈</a></li>
+        <li><a href="#">소개</a></li>
+        <li><a href="/mbti/login" th:if="${userSession==null}">로그인</a></li>
+        <li><a th:if="${userSession!=null}" th:href ="@{/mbti/logout/pro}">로그아웃</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+
+<section class="main">
+  <input type="radio" name="slide" id="slide1">
+  <input type="radio" name="slide" id="slide2" checked>
+  <input type="radio" name="slide" id="slide3">
+
+  <ul class="pagelist">
+    <li class="introduce" id="back_page">
+      <div>
+        <p>백엔드</p>
+        <p>이름 : 주동호</p>
+        <p>소속 : 부천대학교 컴퓨터소프트웨어과</p>
+        <p>생년월일 : 2001.10.30</p>
+        <label for="slide2"><a> > </a></label>
+      </div>
+    </li>
+
+    <li class="introduce_select">
+      <label for="slide1"><a class="but" id="back">백엔드</a></label>
+      <label for="slide3"><a class="but" id="front">프론트엔드</a></label>
+    </li>
+
+    <li class="introduce" id="front_page">
+      <div>
+        <p>프론트엔드</p>
+        <p>이름 : 김보영</p>
+        <p>소속 : 부천대학교 컴퓨터소프트웨어과</p>
+        <p>생년월일 : 2000.09.05</p>
+        <label for="slide2"><a> < </a></label>
+      </div>
+    </li>
+  </ul>
+</section>
+
+
+<script>
+  // function teststart() {
+  //   document.getElementById("back_page").style.display = "block";
+  // }
+</script>
+
+</body>
+</html>
