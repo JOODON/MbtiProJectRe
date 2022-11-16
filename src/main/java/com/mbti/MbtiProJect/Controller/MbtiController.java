@@ -24,7 +24,6 @@ public class MbtiController {
         if (httpSession.getAttribute("memberid")!= null){
             userSession=(String) httpSession.getAttribute("memberid");
         }
-        System.out.println("메인페이지에서:"+userSession);
         model.addAttribute("userSession",userSession);
         return "mainPage";
     }
@@ -33,6 +32,7 @@ public class MbtiController {
     public String secondmainPage(Model model, @PageableDefault(page = 1,size = 1,sort = "id",direction= Sort.Direction.ASC ) Pageable pageable ,String value,HttpSession httpSession) throws Exception {
         String userSession=null;
         int pagenum= pageable.getPageNumber();
+
         if (httpSession.getAttribute("memberid")!= null){
             userSession=(String) httpSession.getAttribute("memberid");
         }
@@ -107,7 +107,15 @@ public class MbtiController {
     }
 
     @GetMapping("/mbti/resultpage")
-    public String resultPage(Model model){
+    public String resultPage(Model model,HttpSession httpSession){
+        String userSession=null;
+
+        if (httpSession.getAttribute("memberid")!= null){
+            userSession=(String) httpSession.getAttribute("memberid");
+        }
+        System.out.println("메인페이지에서:"+userSession);
+        model.addAttribute("userSession",userSession);
+
         String mbtiResult[]=new String[4];
         Long Enum=mbtiService.mbtivalue("E");
         Long Inum=mbtiService.mbtivalue("I");
@@ -146,4 +154,5 @@ public class MbtiController {
         model.addAttribute("mbtivalue",mbtivalue);
         return "resultMainPage";
     }
+
 }

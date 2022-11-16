@@ -193,8 +193,8 @@
     <!--            메뉴-->
     <nav id="navbar">
       <ul id="centerMenu">
-        <li><a href="/mbti/secondmainpage">홈</a></li>
-        <li><a href="#">소개</a></li>
+        <li><a href="http://localhost:8080/mbti/mainpage">홈</a></li>
+        <li><a href="http://localhost:8080/mbti/Introduction">소개</a></li>
         <li><a href="/mbti/login" th:if="${userSession==null}">로그인</a></li>
         <li><a th:if="${userSession!=null}" th:href ="@{/mbti/logout/pro}">로그아웃</a></li>
       </ul>

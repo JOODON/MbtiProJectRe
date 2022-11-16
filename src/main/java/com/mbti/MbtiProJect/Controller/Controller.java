@@ -78,4 +78,14 @@ public class Controller {
         model.addAttribute("searchUrl", "/mbti/mainpage");
         return "message";
     }
+    @GetMapping("/mbti/Introduction")
+    public String IntroductionPage(HttpSession httpSession,Model model){
+        String userSession=null;
+
+        if (httpSession.getAttribute("memberid")!= null){
+            userSession=(String) httpSession.getAttribute("memberid");
+        }
+        model.addAttribute("userSession",userSession);
+        return "introducePage";
+    }
 }
