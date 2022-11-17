@@ -106,53 +106,6 @@ public class MbtiController {
         return "secondMainPage";
     }
 
-    @GetMapping("/mbti/resultpage")
-    public String resultPage(Model model,HttpSession httpSession){
-        String userSession=null;
 
-        if (httpSession.getAttribute("memberid")!= null){
-            userSession=(String) httpSession.getAttribute("memberid");
-        }
-        System.out.println("메인페이지에서:"+userSession);
-        model.addAttribute("userSession",userSession);
-
-        String mbtiResult[]=new String[4];
-        Long Enum=mbtiService.mbtivalue("E");
-        Long Inum=mbtiService.mbtivalue("I");
-        if (Enum >Inum) {
-            mbtiResult[0] = "E";
-        }
-        else {
-            mbtiResult[0] = "I";
-        }
-        Long Nnum=mbtiService.mbtivalue("N");
-        Long Snum=mbtiService.mbtivalue("S");
-        if (Nnum >Snum) {
-            mbtiResult[1] = "N";
-        }
-        else {
-            mbtiResult[1] = "S";
-        }
-        Long Tnum=mbtiService.mbtivalue("T");
-        Long Fnum=mbtiService.mbtivalue("F");
-        if (Tnum >Fnum) {
-            mbtiResult[2] = "T";
-        }
-        else {
-            mbtiResult[2] = "F";
-        }
-        Long Pnum=mbtiService.mbtivalue("P");
-        Long Jnum=mbtiService.mbtivalue("J");
-        if (Pnum >Jnum) {
-            mbtiResult[3] = "P";
-        }
-        else {
-            mbtiResult[3] = "J";
-        }
-        System.out.println(mbtiResult[0]+mbtiResult[1]+mbtiResult[2]+mbtiResult[3]);
-        String mbtivalue=mbtiResult[0]+mbtiResult[1]+mbtiResult[2]+mbtiResult[3];
-        model.addAttribute("mbtivalue",mbtivalue);
-        return "resultMainPage";
-    }
 
 }
