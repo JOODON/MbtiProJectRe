@@ -1,7 +1,9 @@
 package com.mbti.MbtiProJect.Controller;
 
 import com.mbti.MbtiProJect.entity.Mbtilist;
+import com.mbti.MbtiProJect.entity.Member;
 import com.mbti.MbtiProJect.service.MbtiService;
+import com.mbti.MbtiProJect.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -17,6 +19,8 @@ import javax.servlet.http.HttpSession;
 public class MbtiController {
     @Autowired
     private MbtiService mbtiService;
+    @Autowired
+    private MemberService memberService;
     @GetMapping("/mbti/mainpage")
     public String mainPage(HttpSession httpSession,Model model){
         String userSession=null;
@@ -36,6 +40,8 @@ public class MbtiController {
         if (httpSession.getAttribute("memberid")!= null){
             userSession=(String) httpSession.getAttribute("memberid");
         }
+        System.out.println("메인페이지에서 회원 정보"+memberService.MemberListByName(userSession));
+        //이렇게 이름으로 찾고 메인페이지에서 모델만 써서 하면될듯!
         System.out.println("메인페이지에서:"+userSession);
         model.addAttribute("userSession",userSession);
 

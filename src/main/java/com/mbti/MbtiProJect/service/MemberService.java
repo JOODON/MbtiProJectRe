@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
 @Service
 public class MemberService {
@@ -17,6 +18,9 @@ public class MemberService {
 
     public void singup(Member member){
         memberRepository.save(member);
+    }
+    public List<Member> MemberListByName(String name){
+        return memberRepository.findBymemberid(name);
     }
     public int login(String memberid,String memberpassword){
         int insertCount=0;
