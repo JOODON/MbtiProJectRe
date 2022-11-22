@@ -36,7 +36,7 @@ public class MemberService {
             rs=ps.executeQuery();
             if(rs.next()){
                 if (rs.getString(1).equals(memberpassword)) {
-                    return 1;
+                    return 1;//로그인성공
                 }
                 else {
                     return insertCount;
