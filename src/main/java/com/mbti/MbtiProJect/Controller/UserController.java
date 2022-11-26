@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -61,7 +62,7 @@ public class UserController {
         return "message";
     }
     @GetMapping("/mbti/singup")
-    public String SingUpPage() {
+    public String SingUpPage(HttpSession httpSession,Model model) {
 
         return "SingUpPage";
     }
@@ -72,5 +73,25 @@ public class UserController {
         memberService.singup(member);
 
         return "loginPage";
+    }
+    @GetMapping("/mbti/mypage")
+    public String myPage(HttpSession httpSession,Model model){
+        String userSession=null;
+
+        if (httpSession.getAttribute("memberid")!= null){
+            userSession=(String) httpSession.getAttribute("memberid");
+        }
+
+        model.addAttribute("userSession",userSession);
+        System.out.println("메인페이지에서 회원 정보"+memberService.MemberListByName(userSession));
+        List<Member> member=memberService.MemberListByName(userSession);
+        if(member.size()==0){
+            model.addAttribute("message", "로그인을 해주세요");
+            model.addAttribute("searchUrl", "/mbti/login");
+        }
+
+        System.out.println(member.size());
+        model.addAttribute("MemberList",member);
+        return "myPage";
     }
 }

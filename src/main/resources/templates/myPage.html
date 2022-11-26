@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="kr">
+<html lang="kr" xmlns:th="http://www.thymleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -220,16 +220,17 @@
         <!--        안쪽 상자 (흰색)-->
         <section id="in_line">
             <!--            회원 정보-->
-            <div id="information_box1">
-                <p><span>성격유형</span>&nbsp;<a>ENFP</a></p>
-                <p><span>아이디</span>&nbsp;<a>admin1</a></p>
-                <p><span>이름</span>&nbsp;<a>ㅇㅇㅇ</a></p>
-                <p><span>생년월일</span>&nbsp;<a>xxxx.xx.xx</a></p>
-                <p><span>전화번호</span>&nbsp;<a>010-0000-0000</a></p>
+            <div id="information_box1" th:each="member:${MemberList}" >
+                <p><span>성격유형</span><a>ENFP</a></p>
+                <p><span>아이디</span><a th:text="${member.memberid}">admin1</a></p>
+                <p><span>이름</span><a th:text="${member.membername}">ㅇㅇㅇ</a></p>
+                <p><span>이메일</span><a th:text="${member.memberemail}">xxxx.xx.xx</a></p>
+                <p><span>전화번호</span><a th:text="${member.phonenumber}">010-0000-0000</a></p>
             </div>
             <div id="information_box2">
                 <a href="informationRevise.html" id="revise">정보 수정하러 가기</a>
             </div>
+
         </section>
     </section>
 </section>

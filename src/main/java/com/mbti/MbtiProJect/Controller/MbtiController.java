@@ -40,8 +40,6 @@ public class MbtiController {
         if (httpSession.getAttribute("memberid")!= null){
             userSession=(String) httpSession.getAttribute("memberid");
         }
-        System.out.println("메인페이지에서 회원 정보"+memberService.MemberListByName(userSession));
-        //이렇게 이름으로 찾고 메인페이지에서 모델만 써서 하면될듯!
         System.out.println("메인페이지에서:"+userSession);
         model.addAttribute("userSession",userSession);
 
