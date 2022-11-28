@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="kr" xmlns:th="http://www.thymleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+
+  <script src="https://kit.fontawesome.com/41cdbb121d.js" crossorigin="anonymous"></script>
+
+  <style>
+    *{
+      font-family: 'Jua', sans-serif;
+      list-style: none;
+      text-decoration: none;
+      border-collapse: collapse;
+      margin: 0; padding: 0;
+      color: #3a3939;
+    }
+    html {font-size: 20px;}
+
+    body {
+      font-size: 1rem;
+      width: 100%;
+      height: 100vh;
+      position: relative;
+    }
+
+    /*커서 영역 기준*/
+    .header_line {
+      width: 100%; height: 5.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /*헤더 디자인*/
+    #header {
+      width: 100%; height: 5rem;
+      z-index: 2;
+      position: absolute;
+      top: -5.5rem;
+      background: #e9eff6;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: .3s;
+    }
+
+    /*커서 올렸을 때 나타내기*/
+    .header_line:hover > #header {
+      top: 0;
+    }
+
+    /*로고 디자인*/
+    #header #logo {
+      padding: 1rem;
+      margin-left: 3.5rem;
+      cursor: pointer;
+    }
+
+    /*메뉴바(네비바) 디자인*/
+    #header #centerMenu {
+      display: flex;
+      justify-content: space-between;
+      margin-right: 4.5rem
+    }
+
+    /*nav 메뉴들*/
+    #header #centerMenu li {
+      padding: .4rem;
+      cursor: pointer;
+    }
+
+    /*nav 애니메이션*/
+    #header #centerMenu li > a {
+      transition: all .05s;
+    }
+
+    /*메인*/
+    .main {
+      margin-top: 40px;
+      width: 100%;
+    }
+
+    /*바깥 박스 디자인*/
+    .main #out_line {
+      box-shadow: 5px 5px 10px #a0a6bb;
+      background-color: #e9eff6;
+      border-radius: 10px;
+      width: 35rem; height: 19rem;
+      margin: 1rem auto;
+      padding: .5rem;
+    }
+
+    /*안쪽 박스 디자인*/
+    .main #in_line {
+      background-color: #ffffff;
+      border-radius: 10px;
+      width: 33.5rem; height: 15rem;
+      margin: 0 auto;
+    }
+
+    /*제목*/
+    .main #out_line h2 {
+      text-align: center;
+      width: 100%;
+      margin: .5rem;
+    }
+
+    /*컨텐츠 감싸고 있는 박스*/
+    .main #container {
+      display: flex;
+    }
+    /*컨텐츠 박스*/
+    .main #information_box1,
+    .main #information_box2
+    {
+      padding: 1.5rem 1rem;
+    }
+
+    /*컨텐츠 라인*/
+    .main #container p {
+      margin-bottom: .75rem;
+    }
+
+    /*행 제목*/
+    .main #container span {
+      font-size: .9rem;
+      padding: .4rem .2rem;
+      width: 4.75rem;
+      display: inline-block;
+    }
+
+    /*버튼 컨테이너*/
+    .main #information_box3 {
+      border: none;
+      margin: 0px .75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      height: 20%;
+    }
+
+    /*버튼 디자인*/
+    .main #information_box3 a,
+    .main #information_box3 input
+    {
+      font-size: 1rem;
+      border: none;
+      background-color: #a0a6bb;
+      color: #fff;
+      padding: .6rem 5rem;
+      margin-top: 5px;
+      box-shadow: 2px 2px 5px #a0a6bb;
+      border-radius: 5px;
+      transition-duration: .05s;
+      cursor: pointer;
+    }
+
+    /*호버*/
+    .main #information_box3 a:hover,
+    .main #information_box3 input:hover {
+      background: #7a8094;
+    }
+
+    /*text박스 디자인*/
+    .main #container input[type=text] {
+      padding: .3rem;
+      width: 8rem;
+      font-size: .9rem;
+      border-radius: 5px;
+    }
+
+    /*작성 금지 배경색*/
+    #mbti, #id {
+      background: rgba(231, 234, 238, 0.75);
+    }
+  </style>
+
+  <title>Mbti MyPage</title>
+</head>
+<body>
+<!--    헤더-->
+<div class="header_line">
+  <header id="header">
+    <!--            로고-->
+    <h1 id="logo"><a href="mainPage.html">Mbti</a></h1>
+    <!--            메뉴-->
+    <nav id="navbar">
+      <ul id="centerMenu">
+        <li><a href="http://localhost:8080/mbti/mainpage">홈</a></li>
+        <li><a href="http://localhost:8080/mbti/Introduction">소개</a></li>
+        <li><a href="/mbti/login" th:if="${userSession==null}">로그인</a></li>
+        <li><a th:if="${userSession!=null}" th:href ="@{/mbti/logout/pro}">로그아웃</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+
+<!--메인-->
+<section class="main">
+  <!--바깥 상자 (파란색)-->
+  <section id="out_line">
+    <h2>정보 수정</h2>
+    <!--        안쪽 상자 (흰색)-->
+    <section id="in_line">
+      <!--            회원 정보-->
+      <form action="" method="post">
+            <span id="container">
+                <div id="information_box1">
+                    <p><span>성격유형</span>&nbsp;<input type="text" name="mbti" id="mbti" disabled value="ENTJ"></p>
+                    <p><span>아이디</span>&nbsp;<input type="text" name="id" id="id" disabled value="admin1"></p>
+                    <p><span>비밀번호</span>&nbsp;<input type="text" name="id" id="pw" style="ime-mode:disabled" required></p>
+                </div>
+                <div id="information_box2">
+                    <p><span>이름</span>&nbsp;<input type="text" name="name" id="name" required></p>
+                    <p><span>생년월일</span>&nbsp;<input type="text" name="birth" id="birth" required></p>
+                    <p><span>전화번호</span>&nbsp;<input type="text" name="number" id="number" required></p>
+                </div>
+            </span>
+        <div id="information_box3">
+          <a href="myPage.html" id="back">뒤로가기</a>
+          <input type="submit" value="수정하기">
+        </div>
+      </form>
+    </section>
+  </section>
+</section>
+
+</body>
+</html>
