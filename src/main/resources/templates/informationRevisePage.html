@@ -210,16 +210,16 @@
     <section id="in_line">
       <!--            회원 정보-->
       <form action="" method="post">
-            <span id="container">
+            <span id="container" th:each="member:${MemberList}">
                 <div id="information_box1">
                     <p><span>성격유형</span>&nbsp;<input type="text" name="mbti" id="mbti" disabled value="ENTJ"></p>
-                    <p><span>아이디</span>&nbsp;<input type="text" name="id" id="id" disabled value="admin1"></p>
-                    <p><span>비밀번호</span>&nbsp;<input type="text" name="id" id="pw" style="ime-mode:disabled" required></p>
+                    <p><span>아이디</span>&nbsp;<input th:text="${member.memberid}" type="text" name="id" id="id" disabled value="admin1"></p>
+                    <p><span>비밀번호</span>&nbsp;<input type="text" name="memberpassword" id="pw" style="ime-mode:disabled" required></p>
                 </div>
                 <div id="information_box2">
-                    <p><span>이름</span>&nbsp;<input type="text" name="name" id="name" required></p>
-                    <p><span>생년월일</span>&nbsp;<input type="text" name="birth" id="birth" required></p>
-                    <p><span>전화번호</span>&nbsp;<input type="text" name="number" id="number" required></p>
+                    <p><span>이름</span>&nbsp;<input type="text" name="membername" id="name" required></p>
+                    <p><span>이메일</span>&nbsp;<input type="text" name="memberEmail" id="birth" required></p>
+                    <p><span>전화번호</span>&nbsp;<input type="text" name="phonenumber" id="number" required></p>
                 </div>
             </span>
         <div id="information_box3">

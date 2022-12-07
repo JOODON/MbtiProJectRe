@@ -83,7 +83,7 @@ public class UserController {
         }
 
         model.addAttribute("userSession",userSession);
-        System.out.println("메인페이지에서 회원 정보"+memberService.MemberListByName(userSession));
+
         List<Member> member=memberService.MemberListByName(userSession);
         if(member.size()==0){
             model.addAttribute("message", "로그인을 해주세요");
@@ -93,5 +93,25 @@ public class UserController {
         System.out.println(member.size());
         model.addAttribute("MemberList",member);
         return "myPage";
+    }
+    @GetMapping ("mbti/mypagerevise")
+    public String myPageRevise(HttpSession httpSession,Model model,Member member){
+        String userSession=null;
+        if (httpSession.getAttribute("memberid")!= null){
+            userSession=(String) httpSession.getAttribute("memberid");
+        }
+        model.addAttribute("userSession",userSession);
+
+        List<Member> memberList=memberService.MemberListByName(userSession);
+
+        model.addAttribute("MemberList",memberList);
+
+        member.setMemberpassword(member.getMemberpassword());
+        member.setMembername(member.getMembername());
+        member.setPhonenumber(member.getPhonenumber());
+
+        memberService.singup(member);
+
+        return "informationRevisePage";
     }
 }
