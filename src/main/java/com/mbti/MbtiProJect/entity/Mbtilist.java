@@ -14,8 +14,11 @@ public class Mbtilist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String mbtitext;
+
     private String mbtivalue;
+
     private String mbtitestvalue;
 
 }

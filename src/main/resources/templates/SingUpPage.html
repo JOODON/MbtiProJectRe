@@ -125,19 +125,19 @@
         <h1>회원가입</h1>
         <form action="/board/singupAction" method="post">
             <div class="textBox">
-                <input type="text" id="memberName" name="membername" size="100" required
+                <input type="text" id="memberName" name="memberName" size="100" required
                        oninvalid="this.setCustomValidity('이름을 입력해주세요.')" oninput="this.setCustomValidity('')">
                 <label for="memberName" id="name-text">이름</label>
             </div>
 
             <div class="textBox">
-                <input type="text" id="id" name="memberid" size="100" required
+                <input type="text" id="id" name="memberId" size="100" required
                        oninvalid="this.setCustomValidity('아이디를 입력해주세요.')" oninput="this.setCustomValidity('')">
                 <label for="id" id="id-text">아이디</label>
             </div>
 
             <div class="textBox">
-                <input type="password" id="memberPassword" name="memberpassword" size="100" required
+                <input type="password" id="memberPassword" name="memberPassword" size="100" required
                        oninvalid="this.setCustomValidity('비밀번호를 입력해주세요.')" oninput="this.setCustomValidity('')">
                 <label for="memberPassword" id="pw-text">비밀번호</label>
             </div>
@@ -149,20 +149,20 @@
             </div>
 
             <div class="textBox">
-                <input type="text" id="PhoneNumber" name="phonenumber" size="20" required
+                <input type="text" id="PhoneNumber" name="phoneNumber" size="20" required
                        oninvalid="this.setCustomValidity('전화번호를 입력해주세요.')" oninput="this.setCustomValidity('')">
                 <label for="PhoneNumber" id="number-text">전화번호</label>
             </div>
 
             <div class="textBox">
-                <input type="text" id="memberEmail" name="memberemail" size="100" required
+                <input type="text" id="memberEmail" name="memberEmail" size="100" required
                        oninvalid="this.setCustomValidity('이메일을 입력해주세요.')" oninput="this.setCustomValidity('')">
                 <label for="memberEmail" id="mail-text">이메일</label>
             </div>
 
             <div class="gender">
-                <input type="radio" id="m" name="membergender" value="man" checked><label for="m">남자 &nbsp;</label>
-                <input type="radio" id="f" name="membergender" value="woman"><label for="f">여자</label>
+                <input type="radio" id="m" name="memberGender" value="man" checked><label for="m">남자 &nbsp;</label>
+                <input type="radio" id="f" name="memberGender" value="woman"><label for="f">여자</label>
             </div>
 
             <div class="but">

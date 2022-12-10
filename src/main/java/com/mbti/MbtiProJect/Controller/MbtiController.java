@@ -109,7 +109,4 @@ public class MbtiController {
         mbtiService.MbtiResultadd(mbtiValue);
         return "secondMainPage";
     }
-
-
-
 }
