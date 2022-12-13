@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.thymeleaf.model.IModel;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 @Controller
 public class MbtiController {
@@ -50,6 +51,9 @@ public class MbtiController {
         System.out.println(mbtiValue.getId());
         //처음값이 넒값이 나오므로 1로 처리
 
+
+        ArrayList<String> mbtiValueArray=new ArrayList<String>();
+
         if(value==null){
             value="1";
         }
@@ -59,12 +63,14 @@ public class MbtiController {
             mbtiValue.setMbtitext(mbtiValue.getMbtitext());
             mbtiValue.setMbtivalue(mbtiValue.getMbtivalue());
             mbtiValue.setMbtitestvalue("E");
+            mbtiValueArray.add("E");
         }
         else if(value.equals("2")&&mbtiValue.getId()<=6){
             mbtiValue.setId(mbtiValue.getId());
             mbtiValue.setMbtitext(mbtiValue.getMbtitext());
             mbtiValue.setMbtivalue(mbtiValue.getMbtivalue());
             mbtiValue.setMbtitestvalue("I");
+            mbtiValueArray.add("I");
         }
         //S랑 N값 처리
         else if (value.equals("1")&&mbtiValue.getId()<=11&&mbtiValue.getId()>6){
@@ -72,12 +78,14 @@ public class MbtiController {
             mbtiValue.setMbtitext(mbtiValue.getMbtitext());
             mbtiValue.setMbtivalue(mbtiValue.getMbtivalue());
             mbtiValue.setMbtitestvalue("N");
+            mbtiValueArray.add("N");
         }
         else if(value.equals("2")&&mbtiValue.getId()<=11&&mbtiValue.getId()>6){
             mbtiValue.setId(mbtiValue.getId());
             mbtiValue.setMbtitext(mbtiValue.getMbtitext());
             mbtiValue.setMbtivalue(mbtiValue.getMbtivalue());
             mbtiValue.setMbtitestvalue("S");
+            mbtiValueArray.add("S");
         }
         //T랑 F값 처리
         else if (value.equals("1")&&mbtiValue.getId()<=16&&mbtiValue.getId()>11){
@@ -85,24 +93,28 @@ public class MbtiController {
             mbtiValue.setMbtitext(mbtiValue.getMbtitext());
             mbtiValue.setMbtivalue(mbtiValue.getMbtivalue());
             mbtiValue.setMbtitestvalue("F");
+            mbtiValueArray.add("F");
         }
         else if(value.equals("2")&&mbtiValue.getId()<=16&&mbtiValue.getId()>11){
             mbtiValue.setId(mbtiValue.getId());
             mbtiValue.setMbtitext(mbtiValue.getMbtitext());
             mbtiValue.setMbtivalue(mbtiValue.getMbtivalue());
             mbtiValue.setMbtitestvalue("T");
+            mbtiValueArray.add("T");
         }
         else if (value.equals("1")&&mbtiValue.getId()<=21&&mbtiValue.getId()>16){
             mbtiValue.setId(mbtiValue.getId());
             mbtiValue.setMbtitext(mbtiValue.getMbtitext());
             mbtiValue.setMbtivalue(mbtiValue.getMbtivalue());
             mbtiValue.setMbtitestvalue("J");
+            mbtiValueArray.add("J");
         }
-        else if(value.equals("2")&&mbtiValue.getId()<=21&&mbtiValue.getId()>16){
+        else if(value.equals("2")&&mbtiValue.getId()<=21 && mbtiValue.getId()>16){
             mbtiValue.setId(mbtiValue.getId());
             mbtiValue.setMbtitext(mbtiValue.getMbtitext());
             mbtiValue.setMbtivalue(mbtiValue.getMbtivalue());
             mbtiValue.setMbtitestvalue("P");
+            mbtiValueArray.add("P");
         } else{
             return "redirect:/mbti/resultpage";
         }
